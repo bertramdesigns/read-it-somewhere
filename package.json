@@ -1,0 +1,13 @@
+{
+    "name": "@read-it-somewhere/monorepo",
+    "version": "0.1.0",
+    "description": "A collection of things I read somewhere",
+    "type": "module",
+    "scripts": {
+        "dev": "pnpm --filter docs start",
+        "start": "pnpm --filter docs start"
+    },
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {}
+}
