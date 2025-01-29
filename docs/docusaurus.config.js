@@ -15,7 +15,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://rits.bertramdesigns.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -46,7 +46,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/bertramdesigns/read-it-somewhere/',
+            'https://github.com/bertramdesigns/read-it-somewhere/blob/main/docs/',
         },
         blog: {
           showReadingTime: true,
@@ -57,7 +57,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/bertramdesigns/read-it-somewhere/',
+            'https://github.com/bertramdesigns/read-it-somewhere/blob/main/docs/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -76,9 +76,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'Read it somewhere',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Read it somewhere logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -90,7 +90,7 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/bertramdesigns/read-it-somewhere',
             label: 'GitHub',
             position: 'right',
           },
@@ -103,8 +103,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'firebase',
+                to: '/docs/firebase/',
               },
             ],
           },
@@ -134,12 +134,12 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/bertramdesigns/read-it-somewhere',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Read it somewhere, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
