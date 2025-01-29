@@ -5,7 +5,10 @@
     "type": "module",
     "scripts": {
         "dev": "pnpm --filter docs start",
-        "start": "pnpm --filter docs start"
+        "start": "pnpm --filter docs start",
+        "build": "pnpm --filter docs build",
+        "serve": "pnpm --filter docs serve",
+        "deploy:firebase": "pnpm --filter docs deploy:firebase"
     },
     "license": "MIT",
     "dependencies": {},
