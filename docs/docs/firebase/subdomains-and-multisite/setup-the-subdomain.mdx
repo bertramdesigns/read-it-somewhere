@@ -1,33 +1,46 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Setup the Subdomain
 
-## Creating a subdomain
-
 [Official Docs](https://firebase.google.com/docs/hosting/custom-domain)
 
-### Go to the Firebase Console -> 'your-project' -> Hosting
+### Open your site manager
 
-### Click 'Add custom domain'
+Go to the Firebase Console, select your project. Then click on Hosting in the left sidebar.
+
+If you have not already added your second site, go to the [previouse step](add-a-site.mdx).
+
+Select the site you want to add as your subomain. Make sure you aren't adding the subdomain to the main site.
+
+### Add custom domain
 
 ![Add Custom Domain](img/add-custom-domain.png)
 
-### Enter the subdomain you want to use, including the domain name.
+Select "Add custom domain".
 
-You can choose to redirect here as well. So for example, if I wanted to redirect `ris.bertramdesigns.com` to `rits.bertramdesigns.com`, I would check the box to Redirect.
+Enter the subdomain you want to use, including the domain name.
 
 ![Enter Subdomain](img/add-custom-domain-modal.png)
 
-If you are setting up the subdomain, you will then need to add to your DNS records.
+<details>
+<summary>Adding redirects</summary>
+
+You can choose to redirect here as well.
+
+So for example, if I wanted to redirect `read-it-somewhere.bertramdesigns.com` to `rits.bertramdesigns.com`, I would check the box to Redirect.
+
+You will still need to add these DNS records and the ones for the main subdomain (`rits`) to your domain provider.
+
+</details>
 
 This will supply you with the DNS records you need to add to your domain provider.
 
 ![DNS Records](img/add-records.png)
 
 :::tip
-If you need to transfer the domain for any reason, you can "close for now" and it will give you a "needs setup" tag for you to fix later.
+If you need pause for any reason (like transferring the domain), you can "close for now" and it will give you a "needs setup" tag for you to fix later.
 :::
 
 ### Add the DNS records to your domain provider
@@ -36,4 +49,6 @@ I use Hostinger so I would go to Hostinger, select the domain, and add the recor
 
 ![Hostinger DNS Records](img/hostinger-add-records.png)
 
-Note: the quick setup suggests adding a CNAME record for the subdomain. This won't work if you have other records pointing toward a mail server. Use the Advanced setup instead and add the TXT and setup the SSL certificate. More information [here](https://firebase.google.com/docs/hosting/custom-domain#expandable-2)
+:::note
+The quick setup suggests adding a CNAME record for the subdomain. There are some indications that this may not work if you are have other Type-A records. Instead you can use the Advanced setup if there are issues. More information [here](https://firebase.google.com/docs/hosting/custom-domain#expandable-2)
+:::

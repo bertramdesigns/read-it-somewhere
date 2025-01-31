@@ -1,8 +1,0 @@
-{
-    "label": "Subdomains & Multi-sites",
-    "position": 1,
-    "link": {
-        "type": "generated-index",
-        "description": "A guide to setting up subdomains in a single Firebase project."
-    }
-}
