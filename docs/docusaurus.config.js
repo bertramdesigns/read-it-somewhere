@@ -73,6 +73,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
@@ -84,11 +89,15 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'librarySidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Library',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
+          // { to: '/blog', label: 'Blog', position: 'left' },
+          {
+            type: 'search',
+            position: 'right'
+          },
           {
             href: 'https://github.com/bertramdesigns/read-it-somewhere',
             label: 'GitHub',
@@ -98,12 +107,12 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
+        /* links: [
           {
             title: 'Docs',
             items: [
               {
-                label: 'firebase',
+                label: 'Firebase',
                 to: '/docs/firebase/',
               },
             ],
@@ -138,7 +147,7 @@ const config = {
               },
             ],
           },
-        ],
+        ], */
         copyright: `Copyright © ${new Date().getFullYear()} Read it somewhere, Inc. Built with Docusaurus.`,
       },
       prism: {
