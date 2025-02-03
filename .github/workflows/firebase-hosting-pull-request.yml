@@ -20,6 +20,7 @@ jobs:
       - run: pnpm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
+          entrypoint: /docs
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO_5A951 }}
           projectId: portfolio-5a951
