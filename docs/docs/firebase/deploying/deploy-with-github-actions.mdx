@@ -77,7 +77,8 @@ You should check your `package.json` file to see what the build script is. In my
 
 If you have a monorepo, this would be your root package.json file pointing toward your project package.json.
 
-:::note[PACKAGE MANAGERS OTHER THAN NPM]
+<details>
+<summary>Package managers other than NPM</summary>
 Github actions automatically installs npm. If you are using pnpm, you will need modify your action files to use [pnpm/action-setup@v4](https://github.com/marketplace/actions/setup-pnpm).
 
 In your `.github/workflows/` files, you will need to add the following before running the build script:
@@ -86,9 +87,17 @@ In your `.github/workflows/` files, you will need to add the following before ru
 build_and_deploy:
   steps:
     - uses: pnpm/action-setup@v4
+      with:
+        version: 9
 ```
 
-:::
+If you choose to not specify the version in the action file, you must specify in the `package.json` file. Otherwise the build will fail. For example:
+
+```json
+"packageManager": "pnpm@9.12.3"
+```
+
+</details>
 
 ---
 
