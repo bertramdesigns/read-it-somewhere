@@ -79,6 +79,7 @@ If you have a monorepo, this would be your root package.json file pointing towar
 
 <details>
 <summary>Package managers other than NPM</summary>
+
 Github actions automatically installs npm. If you are using pnpm, you will need modify your action files to use [pnpm/action-setup@v4](https://github.com/marketplace/actions/setup-pnpm).
 
 In your `.github/workflows/` files, you will need to add the following before running the build script:
@@ -123,11 +124,36 @@ Once you have completed the setup, you can revoke the Firebase CLI access to you
 
 ---
 
-### Create a Github Actions workflow
+### Commit and push to Github
 
-Commit the new files to a new branch and push to Github. Make sure the `.github/workflows` files and folders are committed.
+Commit the new files to a new branch and push to Github. Make sure the `.github/workflows` files and folders are committed. Then create a pull request and merge.
 
-4. Go to the Actions tab in your repository and you should see the new workflow.
-5. Merge the branch. The actions should run and deploy your site.
+Alternatively, you can directly commit to the main branch.
+
+### Check the actions
+
+You will find your new actions in github under the Actions tab.
+
+![Actions Tab](img/inspect-actions.png)
+
+From here you can directly run the actions or check the logs. You will get an email when the deployment completes.
 
 On all subsequent merges to the main branch, the actions will run and deploy. There should be a "preview URL" in each PR from now on.
+
+It is not unusual for the first deployment to fail. If it does you can check the logs.
+
+### Debug errors
+
+Click on the workflow (it will have the latest commit message as name)
+
+Select the debug message.
+
+![Debug Message](img/debug-error-1.png)
+
+You will now see the logs and where the build failed.
+
+![Debug Error](img/debug-error-2.png)
+
+Once you know what the error is, go back to your `.github/workflows/action-that-failed.yml` and make the necessary changes.
+
+For this error we need to make sure to run a pnpm install before the build script.
