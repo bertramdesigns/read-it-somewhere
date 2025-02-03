@@ -23,18 +23,51 @@ firebase --version
 
 Navigate to the project root directory in your terminal.
 
-:::note[MONOREPO]
+<details>
+<summary>Monorepo</summary>
+
 If you are using a monorepo, I recommend running all the following commands in the project directly, not the root of the monorepo. The `.github/workflows` folder will be created in the root of your repo anyway, but it ensures your firebase files stay in the project directory.
-:::
+
+You will need to adjust the resulting workflow files to include an [entrypoint](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idstepswithentrypoint) for the firebase step:
+
+```yaml
+name: Deploy to Firebase Hosting on merge
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - run: pnpm install
+      - run: pnpm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+         // highlight-next-line
+          entrypoint: /docs
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROJECT_ID }}
+          channelId: live
+          projectId: your-project-id
+```
+
+</details>
 
 ### Initialize the project
 
-Use the Firebase CLI to initialize the project for hosting [docs](https://firebase.google.com/docs/cli#install_the_firebase_cli)
+Use the Firebase CLI to initialize the project for hosting.
 
 Run `firebase init hosting:github` and select Hosting
 
 :::warning[IF YOU HAVEN'T INITIALIZED HOSTING YET]
-You will need to initialize hosting first. Run `firebase init hosting` and follow the prompts. You can choose to initialize with Github actions when doing this.
+Before running this command, you should have already initialized your project for hosting. In your project root there should be `.firebacerc` and `firebase.json` files.
+
+If not, run `firebase init hosting` and follow the prompts. You can choose to initialize with Github actions when doing this.
 
 Follow the guide [Deploy with Firebase CLI](deploy-with-firebase-cli.mdx) for settings.
 :::
@@ -157,3 +190,13 @@ You will now see the logs and where the build failed.
 Once you know what the error is, go back to your `.github/workflows/action-that-failed.yml` and make the necessary changes.
 
 For this error we need to make sure to run a pnpm install before the build script.
+
+### Other notes
+
+You may notice in your logs the following:
+
+```bash
+  npm warn exec The following package was not found and will be installed: firebase-tools@13.29.3
+```
+
+This does auto resolve by installing the package, but it can be avoided by including the firebase-tools in your `package.json` file.
