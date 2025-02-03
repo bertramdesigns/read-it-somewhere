@@ -1,14 +1,22 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 ---
 
-# Deploy the new site
+# Deploy with Firebase CLI
 
-Once you have created a new site in your project, you will need to deploy your site files. You can do this using the Firebase CLI and/or with Github Actions.
+Once you have created a new project and site in your Firebase Console, you will need to deploy the site files and any functons/databases/etc. You can do this using the Firebase CLI.
 
-For our first deployment, we will use the Firebase CLI.
+This guide will walk you through deploying a static site using hosting for you endpoint to direct toward.
 
-Optional: [Deploy with Github Actions directly](deploy-with-github-actions.md)
+### Be sure the Firebase CLI is installed
+
+If you have not already, install the CLI (Follow the [official docs](https://firebase.google.com/docs/cli#install_the_firebase_cli))
+
+To see if it is installed, you can run the following command:
+
+```bash
+firebase --version
+```
 
 ### Login to Firebase in the CLI
 
@@ -149,7 +157,9 @@ But the name on your the site card is the correct name. In my case it's `read-it
 
 ### Deploy the site
 
-Now you can deploy the site.
+Now you can deploy the site. If you have a multi-site setup you can point to the site you want to deploy. In this case, `hosting:read-it-somewhere`.
+
+As we are only deploying the site files (not the functions or other features) we use the `--only` flag to indicate we are only using hosting. Read more about deploying functions [here](https://firebase.google.com/docs/functions/manage-functions?gen=2nd).
 
 ```bash
 firebase deploy --only hosting:read-it-somewhere
@@ -158,7 +168,3 @@ firebase deploy --only hosting:read-it-somewhere
 :::note[NOTE FOR MONOREPOS]
 If you decided on strategy A (init from the package root, not repo root) make sure to change directory into the correct folder before deploying.
 :::
-
-### Setup the subdomain
-
-Now that the site is populated, [Setup the subdomain](setup-the-subdomain.mdx) to point to the new site.
