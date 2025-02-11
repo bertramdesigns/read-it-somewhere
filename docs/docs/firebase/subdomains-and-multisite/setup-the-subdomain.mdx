@@ -52,3 +52,16 @@ I use Hostinger so I would go to Hostinger, select the domain, and add the recor
 :::note
 The quick setup suggests adding a CNAME record for the subdomain. There are some indications that this may not work if you are have other Type-A records. Instead you can use the Advanced setup if there are issues. More information [here](https://firebase.google.com/docs/hosting/custom-domain#expandable-2)
 :::
+
+
+### Verify the domain
+
+Depending on the TTL of your DNS records and your domain provider, this could take a few minutes to a few hours.
+
+![Verify Domain](img/subdomain-verify.png)
+
+Once the domain is verified, you should be able to see "connected" next to it.
+
+![Connected Domain](img/subdomain-connected.png)
+
+Thats it! Time to deploy your site to the server. [Next step](/docs/firebase/deploy)
